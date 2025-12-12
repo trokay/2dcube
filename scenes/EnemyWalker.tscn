@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://walker"]
+
+[ext_resource type="Script" path="res://scripts/enemy_walker.gd" id="1_l9jvx"]
+
+[node name="EnemyWalker" type="CharacterBody2D"]
+script = ExtResource("1_l9jvx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = RectangleShape2D { size = Vector2(20, 20) }
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.7, 0.7, 0.7)
+polygon = PackedVector2Array(Vector2(-10, -10), Vector2(10, -8), Vector2(10, 10), Vector2(-10, 8))
