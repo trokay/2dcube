@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://turret"]
+
+[ext_resource type="Script" path="res://scripts/enemy_turret.gd" id="1_y8x7s"]
+[ext_resource type="PackedScene" path="res://scenes/Projectile.tscn" id="2_eikcc"]
+
+[node name="EnemyTurret" type="Node2D"]
+script = ExtResource("1_y8x7s")
+projectile_scene = ExtResource("2_eikcc")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.4, 0.4, 0.4)
+polygon = PackedVector2Array(Vector2(-12, -12), Vector2(12, -8), Vector2(12, 8), Vector2(-12, 12))
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(12, -4)
+
+[node name="FireTimer" type="Timer" parent="."]
+autostart = true
+wait_time = 1.8
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
