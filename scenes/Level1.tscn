@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://level1"]
+
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_bgjba"]
+[ext_resource type="PackedScene" path="res://scenes/EnemyWalker.tscn" id="2_rp8n5"]
+[ext_resource type="PackedScene" path="res://scenes/EnemyTurret.tscn" id="3_a7nuu"]
+[ext_resource type="PackedScene" path="res://scenes/AbilityShrine.tscn" id="4_t4r0c"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.05)
+
+[node name="Parallax" type="ParallaxBackground" parent="."]
+
+[node name="LayerFar" type="ParallaxLayer" parent="Parallax"]
+motion_scale = Vector2(0.3, 1)
+
+[node name="FarShapes" type="Node2D" parent="Parallax/LayerFar"]
+
+[node name="Column1" type="ColorRect" parent="Parallax/LayerFar/FarShapes"]
+position = Vector2(-220, -40)
+size = Vector2(20, 200)
+color = Color(0.1, 0.1, 0.1)
+
+[node name="Column2" type="ColorRect" parent="Parallax/LayerFar/FarShapes"]
+position = Vector2(-60, -20)
+size = Vector2(18, 180)
+color = Color(0.08, 0.08, 0.08)
+
+[node name="Column3" type="ColorRect" parent="Parallax/LayerFar/FarShapes"]
+position = Vector2(120, -60)
+size = Vector2(24, 220)
+color = Color(0.12, 0.12, 0.12)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Platforms"]
+position = Vector2(0, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground"]
+shape = RectangleShape2D { size = Vector2(600, 20) }
+
+[node name="Visual" type="ColorRect" parent="Platforms/Ground"]
+position = Vector2(-300, -10)
+size = Vector2(600, 20)
+color = Color(0.3, 0.3, 0.3)
+
+[node name="Ledge" type="StaticBody2D" parent="Platforms"]
+position = Vector2(180, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ledge"]
+shape = RectangleShape2D { size = Vector2(120, 16) }
+
+[node name="Visual" type="ColorRect" parent="Platforms/Ledge"]
+position = Vector2(-60, -8)
+size = Vector2(120, 16)
+color = Color(0.4, 0.4, 0.4)
+
+[node name="Wall" type="StaticBody2D" parent="Platforms"]
+position = Vector2(300, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Wall"]
+shape = RectangleShape2D { size = Vector2(20, 160) }
+
+[node name="Visual" type="ColorRect" parent="Platforms/Wall"]
+position = Vector2(-10, -80)
+size = Vector2(20, 160)
+color = Color(0.35, 0.35, 0.35)
+
+[node name="Player" parent="." instance=ExtResource("1_bgjba")]
+position = Vector2(-200, 40)
+
+[node name="Walker" parent="." instance=ExtResource("2_rp8n5")]
+position = Vector2(0, 100)
+
+[node name="Turret" parent="." instance=ExtResource("3_a7nuu")]
+position = Vector2(140, 20)
+rotation = 0
+
+[node name="ShrineDouble" parent="." instance=ExtResource("4_t4r0c")]
+position = Vector2(-80, 90)
+ability_bit = 1
+message = "Double Jump"
+
+[node name="ShrineDash" parent="." instance=ExtResource("4_t4r0c")]
+position = Vector2(140, 40)
+ability_bit = 2
+message = "Dash"
+
+[node name="ShrineWall" parent="." instance=ExtResource("4_t4r0c")]
+position = Vector2(260, -20)
+ability_bit = 4
+message = "Wall Slide"

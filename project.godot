@@ -1,0 +1,17 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="NoirPlatformer"
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.5")
+
+[rendering]
+anti_aliasing/quality/msaa=2
+
+[input]
+ui_left={"deadzone":0.5,"events":[{"type":"key","scancode":65},{"type":"key","scancode":16777231}]}
+ui_right={"deadzone":0.5,"events":[{"type":"key","scancode":68},{"type":"key","scancode":16777233}]}
+jump={"deadzone":0.5,"events":[{"type":"key","scancode":32},{"type":"key","scancode":87},{"type":"key","scancode":16777232}]}
+dash={"deadzone":0.5,"events":[{"type":"key","scancode":16777237},{"type":"mouse_button","button_index":2}]}
+attack={"deadzone":0.5,"events":[{"type":"key","scancode":74},{"type":"mouse_button","button_index":1}]}
